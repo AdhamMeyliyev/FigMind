@@ -1,0 +1,87 @@
+/* Umumiy stil */
+body {
+  background-color: #f0f8ff;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #333;
+}
+
+/* Tugma */
+#startBtn {
+  background-color: #00B074;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+#startBtn:hover {
+  background-color: #008f5a;
+}
+
+/* O'yin zonasi */
+#gameArea {
+  margin-top: 30px;
+}
+
+/* Shakllar konteyneri */
+#shapesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Har bir shakl */
+.shape {
+  width: 100px;
+  height: 100px;
+  cursor: grab;
+  border: 3px solid #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+.shape:hover {
+  transform: scale(1.1);
+}
+
+/* Ranglar uchun classlar */
+.red { background-color: #ff4d4d; border-radius: 50%; }     /* dumaloq */
+.blue { background-color: #4d79ff; }                        /* kvadrat */
+.green { background-color: #00cc99; transform: rotate(45deg); } /* romb */
+
+/* Drop zone */
+#dropZone {
+  min-height: 300px;
+  border: 3px dashed #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Feedback */
+#feedback {
+  font-weight: bold;
+  color: #008f5a;
+}
+
+.retry-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.3s ease;
+}
+.retry-btn:hover {
+  background: #ff0000;
+}
