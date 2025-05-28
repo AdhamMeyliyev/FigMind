@@ -160,6 +160,100 @@ background: linear-gradient(120deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1
       #question { font-size: 1.4rem; }
       #startBtn { font-size: 1rem; padding: 12px 25px; max-width: 100%; }
     }
+
+		.triangle {
+  width: 0;
+  height: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-bottom: 90px solid currentColor;
+  background: none !important;
+  border-radius: 0 !important;
+}
+
+.rectangle {
+  width: 120px;
+  height: 60px;
+  border-radius: 10px;
+}
+
+.stars {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  width: 90px;
+  height: 90px;
+  background: none;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.hexagon {
+  width: 104px;
+  height: 60px;
+  background-color: currentColor;
+  clip-path: polygon(
+    25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%
+  );
+}
+
+.oval {
+  border-radius: 50% / 100%;
+  width: 120px;
+  height: 90px;
+}
+
+.pentagon {
+  width: 90px;
+  height: 90px;
+  background-color: currentColor;
+  clip-path: polygon(
+    50% 0%,
+    90% 35%,
+    73% 90%,
+    27% 90%,
+    10% 35%
+  );
+}
+
+.cross {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  background-color: transparent;
+}
+
+.cross::before,
+.cross::after {
+  content: "";
+  position: absolute;
+  background-color: currentColor;
+}
+
+.cross::before {
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 20%;
+}
+
+.cross::after {
+  top: 0;
+  left: 40%;
+  width: 20%;
+  height: 100%;
+}
+
   </style>
 </head>
 
@@ -194,7 +288,7 @@ background: linear-gradient(120deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1
 
     const shapeTemplates = [];
     const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'teal', 'indigo', 'lime'];
-    const forms = ['circle', 'square', 'diamond'];
+    const forms = ['circle', 'square', 'diamond',  'rectangle', 'stars', 'hexagon', 'oval', 'pentagon', 'cross'];
 
     colors.forEach(color => {
       forms.forEach(form => {
@@ -209,8 +303,16 @@ background: linear-gradient(120deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1
     })[c];
 
     const translateForm = f => ({
-      circle: 'aylana', square: 'kvadrat', diamond: 'romb'
-    })[f];
+  circle: 'aylana',
+  square: 'kvadrat',
+  diamond: 'romb',
+  rectangle: 'to‘g‘ri to‘rtburchak',
+  stars: 'yulduz',
+  hexagon: 'olti burchak',
+  oval: 'ellips',
+  pentagon: 'beshburchak',
+  cross: 'xoch'
+})[f];
 
     startBtn.addEventListener('click', () => {
       startBtn.style.display = 'none';
