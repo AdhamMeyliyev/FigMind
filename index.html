@@ -2,415 +2,92 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shakl tanlash o'yini</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-    body {
-      background: #833AB4;
-background: linear-gradient(120deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
-      margin: 0;
-      user-select: none;
-      overflow-x: hidden;
-    }
-
-    #gameArea {
-      background: linear-gradient(90deg, #e3f591 0%, #77f1c2 30%);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      text-align: center;
-      position: relative;
-    }
-
-    #question {
-      font-size: 1.7rem;
-      font-weight: 600;
-      color: #292b3e;
-      margin-bottom: 2rem;
-    }
-
-    .shape {
-      cursor: pointer;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-      user-select: none;
-      width: 90px;
-      height: 90px;
-      margin: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .shape:hover {
-      box-shadow: 0 12px 30px rgba(238, 9, 121, 0.45);
-      transform: scale(1.07);
-    }
-
-    .circle { border-radius: 50%; }
-    .square { }
-    .diamond { transform: rotate(45deg); }
-
-    .selected {
-      border: 4px solid #ee0979 !important;
-      box-shadow: 0 15px 40px rgba(238, 9, 121, 0.8) !important;
-      transform: scale(1.1) !important;
-      animation: pulse 1.1s infinite ease-in-out;
-      z-index: 2;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1.1); }
-      50% { transform: scale(1.15); }
-    }
-
-    #feedback {
-      margin-top: 1.5rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-      min-height: 36px;
-      color: #ee0979;
-    }
-
-    #feedback.correct { color: #00b074; }
-    #feedback.incorrect { color: #ff3c41; }
-
-    #startBtn {
-      background: linear-gradient(45deg, #ff6a00, #ee0979);
-      color: white;
-      border: none;
-      padding: 15px 35px;
-      font-size: 1.25rem;
-      border-radius: 50px;
-      box-shadow: 0 6px 15px rgba(238, 9, 121, 0.6);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      max-width: 300px;
-    }
-
-    #startBtn:hover {
-      transform: translateY(-3px);
-    }
-
-    #score {
-      position: absolute;
-      top: -20px;
-      right: 20px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      background: #fff;
-      padding: 8px 18px;
-      border-radius: 20px;
-      color: #ee0979;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    .star {
-      position: absolute;
-      font-size: 2rem;
-      animation: flyStar 1s ease-out forwards;
-      pointer-events: none;
-    }
-
-    @keyframes flyStar {
-      0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-100px) scale(1.8); }
-    }
-
-    #toastMessage {
-      position: fixed;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #00b074;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-weight: 600;
-      z-index: 1000;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      display: none;
-      animation: fadeOut 4s ease forwards;
-    }
-
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { opacity: 0; display: none; }
-    }
-
-    @media (max-width: 576px) {
-      .shape { width: 80px; height: 80px; }
-      #question { font-size: 1.4rem; }
-      #startBtn { font-size: 1rem; padding: 12px 25px; max-width: 100%; }
-    }
-
-		.triangle {
-  width: 0;
-  height: 0;
-  border-left: 45px solid transparent;
-  border-right: 45px solid transparent;
-  border-bottom: 90px solid currentColor;
-  background: none !important;
-  border-radius: 0 !important;
-}
-
-.rectangle {
-  width: 120px;
-  height: 60px;
-  border-radius: 10px;
-}
-
-.stars {
-  position: relative;
-  display: inline-block;
-  color: inherit;
-  width: 90px;
-  height: 90px;
-  background: none;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-}
-
-.hexagon {
-  width: 104px;
-  height: 60px;
-  background-color: currentColor;
-  clip-path: polygon(
-    25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%
-  );
-}
-
-.oval {
-  border-radius: 50% / 100%;
-  width: 120px;
-  height: 90px;
-}
-
-.pentagon {
-  width: 90px;
-  height: 90px;
-  background-color: currentColor;
-  clip-path: polygon(
-    50% 0%,
-    90% 35%,
-    73% 90%,
-    27% 90%,
-    10% 35%
-  );
-}
-
-.cross {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  background-color: transparent;
-}
-
-.cross::before,
-.cross::after {
-  content: "";
-  position: absolute;
-  background-color: currentColor;
-}
-
-.cross::before {
-  top: 40%;
-  left: 0;
-  width: 100%;
-  height: 20%;
-}
-
-.cross::after {
-  top: 0;
-  left: 40%;
-  width: 20%;
-  height: 100%;
-}
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolalar uchun ranglar va shakllar</title>
+  <link href="libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-
 <body>
 
-  <div id="gameWrapper" class="d-flex flex-column align-items-center w-100">
-    <button id="startBtn">O'yinni boshlash</button>
-
-    <div id="gameArea" style="display:none;">
-      <div id="score">Ball: 0</div>
-      <div id="question">Savol: ...</div>
-      <div class="d-flex justify-content-center flex-wrap gap-3" id="optionsContainer"></div>
-      <div id="feedback"></div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow-sm py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4 text-primary" href="#">👶 O‘rganamiz!</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active fw-semibold" href="index.html">🏠 Bosh sahifa</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="colors.html">🎨 Ranglar</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="shapes.html">🔷 Shakllar</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="game.html">🎮 O‘yin</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </nav>
 
-  <div id="toastMessage">🎯 Barakalla!</div>
-	
+  <!-- Header -->
+  <header class="text-center py-5" style="background: linear-gradient(45deg, #ffecd2, #fcb69f); border-bottom: 5px dashed #ff9800;">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3 text-primary">🎉 Keling, ranglar va shakllarni o‘rganamiz!</h1>
+      <p class="lead text-dark">Bolalar uchun rang-barang va interaktiv o‘rganish sahifasi</p>
+    </div>
+  </header>
 
-  <script>
-    const startBtn = document.getElementById('startBtn');
-    const gameArea = document.getElementById('gameArea');
-    const questionEl = document.getElementById('question');
-    const optionsContainer = document.getElementById('optionsContainer');
-    const feedback = document.getElementById('feedback');
-    const scoreEl = document.getElementById('score');
-    const toast = document.getElementById('toastMessage');
+  <!-- Bo‘limlar -->
+  <section class="container my-5">
+    <div class="row g-4">
 
-    let score = 0;
-    let currentQuestion = null;
-    let options = [];
+      <!-- Ranglar -->
+      <div class="col-md-4">
+        <a href="colors.html" class="text-decoration-none">
+          <div class="card h-100 text-center shadow border-0 rounded-4 bg-light hover-shadow">
+            <div class="card-body py-4">
+              <img src="assets/img/colors-icon.png" alt="Ranglar" class="mb-3" style="width: 80px;">
+              <h5 class="card-title fw-bold text-success">🎨 Ranglar</h5>
+              <p class="card-text text-secondary">Ranglarni rasmlar va ovozlar bilan o‘rganing.</p>
+            </div>
+          </div>
+        </a>
+      </div>
 
-    const shapeTemplates = [];
-    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'teal', 'indigo', 'lime'];
-    const forms = ['circle', 'square', 'diamond',  'rectangle', 'stars', 'hexagon', 'oval', 'pentagon', 'cross'];
+      <!-- Shakllar -->
+      <div class="col-md-4">
+        <a href="shapes.html" class="text-decoration-none">
+          <div class="card h-100 text-center shadow border-0 rounded-4 bg-light">
+            <div class="card-body py-4">
+              <img src="assets/img/shapes-icon.png" alt="Shakllar" class="mb-3" style="width: 80px;">
+              <h5 class="card-title fw-bold text-primary">🔷 Shakllar</h5>
+              <p class="card-text text-secondary">Shakllarni ko‘rib, eshitib yodlab oling.</p>
+            </div>
+          </div>
+        </a>
+      </div>
 
-    colors.forEach(color => {
-      forms.forEach(form => {
-        shapeTemplates.push({ color, form });
-      });
-    });
+      <!-- O‘yin -->
+      <div class="col-md-4">
+        <a href="game.html" class="text-decoration-none">
+          <div class="card h-100 text-center shadow border-0 rounded-4 bg-light">
+            <div class="card-body py-4">
+              <img src="assets/img/game-icon.png" alt="O‘yin" class="mb-3" style="width: 80px;">
+              <h5 class="card-title fw-bold text-danger">🎮 O‘yin</h5>
+              <p class="card-text text-secondary">Shakl va ranglar bilan o‘yin o‘ynang!</p>
+            </div>
+          </div>
+        </a>
+      </div>
 
-    const translateColor = c => ({
-      red: 'qizil', blue: 'ko\'k', green: 'yashil',
-      yellow: 'sariq', purple: 'siyohrang', orange: 'to‘q sariq',
-      pink: 'pushti', teal: 'moviy-yashil', indigo: 'to‘q ko‘k', lime: 'och yashil'
-    })[c];
+    </div>
+  </section>
 
-    const translateForm = f => ({
-  circle: 'aylana',
-  square: 'kvadrat',
-  diamond: 'romb',
-  rectangle: 'to‘g‘ri to‘rtburchak',
-  stars: 'yulduz',
-  hexagon: 'olti burchak',
-  oval: 'ellips',
-  pentagon: 'beshburchak',
-  cross: 'xoch'
-})[f];
+  <!-- Footer -->
+  <footer class="text-center bg-warning-subtle py-3 mt-5 border-top border-warning">
+    <p class="mb-0 text-secondary">© 2025 Ranglar va Shakllar platformasi. Hamma huquqlar himoyalangan.</p>
+  </footer>
 
-    startBtn.addEventListener('click', () => {
-      startBtn.style.display = 'none';
-      gameArea.style.display = 'block';
-      score = 0;
-      updateScore();
-      startGame();
-    });
-
-    function updateScore() {
-      scoreEl.textContent = `Ball: ${score}`;
-    }
-
-    function startGame() {
-      feedback.textContent = '';
-      feedback.className = '';
-      optionsContainer.innerHTML = '';
-
-      options = getRandomOptions(3);
-      currentQuestion = options[Math.floor(Math.random() * options.length)];
-
-      questionEl.textContent = `🧠 ${translateColor(currentQuestion.color)} ${translateForm(currentQuestion.form)} ni tanlang!`;
-
-      options.forEach((shape, index) => {
-        const div = document.createElement('div');
-        div.className = `shape ${shape.form}`;
-        div.style.backgroundColor = shape.color;
-        div.dataset.index = index;
-        div.onclick = () => handleChoice(index);
-        optionsContainer.appendChild(div);
-      });
-    }
-
-    function getRandomOptions(n) {
-      const copy = [...shapeTemplates];
-      const selected = [];
-      while (selected.length < n) {
-        selected.push(copy.splice(Math.floor(Math.random() * copy.length), 1)[0]);
-      }
-      return selected;
-    }
-
-    function handleChoice(index) {
-      const shapes = optionsContainer.querySelectorAll('.shape');
-      shapes.forEach(s => s.classList.remove('selected'));
-
-      const selected = shapes[index];
-      selected.classList.add('selected');
-
-      if (index === options.indexOf(currentQuestion)) {
-        score++;
-        updateScore();
-        feedback.textContent = '🎉 To‘g‘ri! Yaxshi ish!';
-        feedback.className = 'correct';
-        showStar(selected);
-
-        if (score % 5 === 0) {
-          showToast(`🎯 Barakalla! Siz ${score} ball yig'dingiz!`);
-        }
-
-        setTimeout(startGame, 1500);
-      } else {
-        feedback.textContent = '❌ Noto‘g‘ri. Yana urinib ko‘ring.';
-        feedback.className = 'incorrect';
-      }
-    }
-
-    function showToast(msg) {
-      toast.textContent = msg;
-      toast.style.display = 'block';
-      toast.style.animation = 'none';
-      void toast.offsetWidth;
-      toast.style.animation = 'fadeOut 4s ease forwards';
-    }
-
-    function showStar(element) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  star.innerHTML = '⭐️';
-  const rect = element.getBoundingClientRect();
-
-  // Pozitsiyasini o‘yin hududi ichida joylashtiramiz
-  const offsetTop = window.scrollY + rect.top;
-  const offsetLeft = window.scrollX + rect.left + rect.width / 2 - 10;
-
-  star.style.position = 'absolute';
-  star.style.left = `${offsetLeft}px`;
-  star.style.top = `${offsetTop}px`;
-
-  document.body.appendChild(star);
-
-  // 1 soniyadan keyin elementni DOM dan olib tashlaymiz
-  setTimeout(() => {
-    star.remove();
-  }, 1000);
-}
-
-  </script>
-
+  <script src="libs/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

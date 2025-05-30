@@ -85,3 +85,134 @@ body {
 .retry-btn:hover {
   background: #ff0000;
 }
+
+
+/* Umumiy */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #fff9e6;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #ff6600;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #fff0d9 !important;
+  border-bottom: 3px solid #ffc107;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e91e63 !important;
+}
+
+.nav-link {
+  color: #555 !important;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #ff6600 !important;
+}
+
+/* Header */
+header {
+  background: linear-gradient(45deg, #ffecd2, #fcb69f);
+  color: #4a148c;
+  border-bottom: 4px dashed #ff9800;
+  padding: 60px 20px;
+  border-radius: 0 0 50px 50px;
+}
+
+/* Kartalar (index.html sahifasida) */
+.card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-body img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* O‘rganish sahifalari (colors.html, shapes.html) */
+.learning-section {
+  background-color: #fff7f0;
+  border: 2px dashed #ffcc80;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.learning-section img {
+  max-width: 120px;
+  margin-bottom: 15px;
+}
+
+.learning-section h4 {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.learning-section p {
+  font-size: 1.1rem;
+}
+
+/* Tugmalar */
+.btn-play, .btn-next {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.btn-play:hover, .btn-next:hover {
+  background-color: #388e3c;
+}
+
+/* Footer */
+footer {
+  background-color: #fbe9e7;
+  border-top: 3px solid #ffab91;
+  font-size: 0.95rem;
+  color: #6d4c41;
+}
+
+/* Responsive dizayn */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+  .card-title {
+    font-size: 1rem;
+  }
+}
